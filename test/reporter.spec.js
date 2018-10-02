@@ -165,13 +165,13 @@ describe('spec reporter', () => {
 
         it('should return the right color when using non default coloredLogs configuration', () => {
             reporter.config.coloredLogs = false;
-            (reporter.getColor('pass', false) === null).should.be.true();
-            (reporter.getColor('passing', false) === null).should.be.true();
-            (reporter.getColor('pending', false) === null).should.be.true();
-            (reporter.getColor('fail', false) === null).should.be.true();
-            (reporter.getColor('fail', false) === null).should.be.true();
-            (reporter.getColor('failing', false) === null).should.be.true();
-            (reporter.getColor('foobar', false) === null).should.be.true()
+            (reporter.getColor('pass') === null).should.be.true();
+            (reporter.getColor('passing') === null).should.be.true();
+            (reporter.getColor('pending') === null).should.be.true();
+            (reporter.getColor('fail') === null).should.be.true();
+            (reporter.getColor('fail') === null).should.be.true();
+            (reporter.getColor('failing') === null).should.be.true();
+            (reporter.getColor('foobar') === null).should.be.true()
         })
     })
 
