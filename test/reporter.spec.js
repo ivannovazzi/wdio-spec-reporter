@@ -143,7 +143,17 @@ describe('spec reporter', () => {
     })
 
     describe('getColor', () => {
-        it('should return the right symbol', () => {
+        let origColoredLogs
+
+        before(() => {
+            origColoredLogs = reporter.config.coloredLogs
+        })
+
+        afterEach(() => {
+            reporter.config.coloredLogs = origColoredLogs
+        })
+
+        it('should return the right color', () => {
             reporter.getColor('pass').should.be.equal('green')
             reporter.getColor('passing').should.be.equal('green')
             reporter.getColor('pending').should.be.equal('cyan')
@@ -153,7 +163,8 @@ describe('spec reporter', () => {
             (reporter.getColor('foobar') === null).should.be.true()
         })
 
-        it('should return the right symbol when using non default coloredLogs configuration', () => {
+        it('should return the right color when using non default coloredLogs configuration', () => {
+            reporter.config.coloredLogs = false;
             (reporter.getColor('pass', false) === null).should.be.true();
             (reporter.getColor('passing', false) === null).should.be.true();
             (reporter.getColor('pending', false) === null).should.be.true();
